@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 import static java.lang.System.in;
@@ -19,7 +20,7 @@ public class Main {
 
         //Solution2();
         //Solution3();
-        System.out.println(Solution4());
+        Solution4();
 
     }
 
@@ -145,26 +146,29 @@ public class Main {
         System.out.println(isPaln);
         }
 
-    public static boolean Solution4(){
+    public static void Solution4(){
         String a = "";
         String b = "";
-        boolean isAnagram = false;
+        String isAnagram = "Not Anagrams";
+
 //        Scanner sc = new Scanner(System.in);
 //        a = sc.next();
 //        b = sc.next();
 
-        a = "anagram";
-        b = "margana";
+       a = "anagramrmm";
+        b = "marganarmm";
 
         a = a.toLowerCase(Locale.ROOT);
         b = b.toLowerCase(Locale.ROOT);
 
         if(a == "" || b == "" || a == null || b == null){
-            return isAnagram;
+            System.out.println(isAnagram);
+            return;
         }
 
         if(a.length() != b.length()){
-            return isAnagram;
+            System.out.println(isAnagram);
+            return;
         }
 
         Map<String, Integer> mapB = new HashMap<String, Integer>();
@@ -172,14 +176,34 @@ public class Main {
             if (! mapB.containsKey(b.substring(i,i+1))){
                mapB.put((b.substring(i,i+1)), 1);
             }else {
-
-
+                int numOfLetter = mapB.get(b.substring(i,i+1));
+                numOfLetter ++;
+                mapB.put((b.substring(i,i+1)), numOfLetter);
             }
+
         }
 
+        for (int i = 0; i < a.length(); i++) {
+            String letter = a.substring(i,i+1);
+            if(mapB.containsKey(letter)){
+                int numOfLettersLeft = mapB.get(letter);
+                if (numOfLettersLeft == 0){
+                    System.out.println(isAnagram);
+                    return;
+                }else{
+                    numOfLettersLeft --;
+                    mapB.put(letter,numOfLettersLeft);
+                }
+            }else{
+                System.out.println(isAnagram);
+                return;
+            }
 
-        return isAnagram;
+        }
+        System.out.println("Anagrams");
+
     }
+
 
 
 }
