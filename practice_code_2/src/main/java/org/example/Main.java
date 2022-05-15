@@ -27,8 +27,9 @@ public class Main {
         //Solution1();
 
         //Solution2();
-        Solution3();
+        //Solution3();
         //Solution4();
+        Solution5();
 
     }
 
@@ -212,6 +213,22 @@ public class Main {
 
     }
 
+    public static void Solution5(){  // this method takes a string and splits it based on a REGEX format
+       // String s = "He is a very very good boy, isn't he?";
+        Scanner scan = new Scanner(System.in);
+        scan.useDelimiter("\\Z");
+        String s = scan.next();
+        if (s.trim().length()==0 || s.trim().length()>400000)  // short circuit if the string input is zero length or larger than permitted 400,000
+        {
+            System.out.println(0);   // print zero if zero length or larger than permitted
+            return;
+        }
+            String [] arrayS =  s.trim().split("[!,?._'@\\s]+");  // split the string into an array  based on the REGEX statement
+            System.out.println(arrayS.length);
+            for (int i = 0; i < arrayS.length; i++) {  // iterate through the array and print each element on a new line using printf
+                System.out.printf("%s%n", arrayS[i]);
+            }
 
+    }
 
 }

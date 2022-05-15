@@ -9,6 +9,15 @@ import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ * Hacker Rank Practice
+ *
+ * Purpose: Basic Java practice - these questions are easy and generally related to integers
+ *
+ * @author Kevin McGoldrick
+ * @version 1.0 5/13/22
+ */
+
 public class Main {
     public static void main(String[] args) throws IOException {
 
