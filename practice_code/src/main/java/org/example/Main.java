@@ -268,6 +268,9 @@ public class Main {
         int B = 7;
 
         int number = A*B;
+        System.out.println("the Integer number is " + number);
+        System.out.println("the binary representation of " +number + " is " + Integer.toBinaryString(number));
+
         // simple statement ... simply Integer.bitCount(i) !!
         System.out.println("the number of 1's in the binary representation of " + number + " is " + Integer.bitCount(number));
     }
