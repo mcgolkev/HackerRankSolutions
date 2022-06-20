@@ -34,7 +34,8 @@ public class Main {
         //Solution9();
         //Solution10();
         //Solution11();
-        Solution12();
+        //Solution12();
+        Solution13();
     }
 
     public static void Solution(){
@@ -260,6 +261,15 @@ public class Main {
             return retValue;
 
 
+    }
+
+    public static void Solution13(){  // the TRICK to counting the number of 1s in the binary representation of a number
+        int A = 3;
+        int B = 7;
+
+        int number = A*B;
+        // simple statement ... simply Integer.bitCount(i) !!
+        System.out.println("the number of 1's in the binary representation of " + number + " is " + Integer.bitCount(number));
     }
 }
 
