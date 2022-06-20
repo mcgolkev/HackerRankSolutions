@@ -33,7 +33,8 @@ public class Main {
         //Solution8();
         //Solution9();
         //Solution10();
-        Solution11();
+        //Solution11();
+        Solution12();
     }
 
     public static void Solution(){
@@ -63,7 +64,7 @@ public class Main {
         }
     }
 
-    public static void Solution3(){  // receive input from scanner, GOTCHA, need to do a nextline() on line 55 to clear crlf from line 54
+    public static void Solution3(){  // receive input from scanner, GOTCHA, need to do a nextline() to clear crlf the next line
         Scanner scanner = new Scanner(System.in);
         String s = "";
         double d = 0;
@@ -199,6 +200,74 @@ public class Main {
         System.out.println("France: " + f.format(payment));
 
 
+    }
+
+    public static int Solution12(){  
+        int originalNumber = 235;
+        int number = originalNumber;
+        int supplyNumber = -9;
+        int retValue = 0;
+
+        if (supplyNumber <=0){
+            System.out.println("the number is " + number);
+        }
+
+        int ones = number % 10;
+        System.out.println("ones = " + ones + " number = " + number);
+
+        number = number / 10;
+        System.out.println("number after / 10 = " + number);
+        int tens = number % 10;
+        System.out.println("number tens = " + tens);
+        number = number / 10;
+        int hundreds =  number % 10;
+        number = number / 10;
+        System.out.println("ones = " + ones + " tens = " + tens + " hundreds = " + hundreds + "number = " + number);
+
+       int targetHundreds = 9 - hundreds;
+       int targetTens = 9 - tens;
+       int targetOnes = 9 - ones;
+
+       if (supplyNumber <=0){
+           System.out.println("QUICK HIT number: " + originalNumber);
+           retValue = originalNumber;
+           return  retValue;
+       }
+
+       if((supplyNumber) >= (targetHundreds + targetOnes + targetTens)){
+            System.out.println("IF ONE The number is : " + 999);
+            return retValue;
+        }
+
+       if (supplyNumber - targetHundreds > 0){
+           hundreds = 9;
+           supplyNumber -= targetHundreds;
+       }else{
+           hundreds += supplyNumber;
+           retValue = (hundreds* 100 + tens * 10 + ones);
+           System.out.println("HUNDREDS RETURN number = " + retValue);
+           return retValue;
+       }
+        if (supplyNumber - targetTens > 0){
+            tens = 9;
+            supplyNumber -= targetTens;
+        }else{
+            tens += supplyNumber;
+            retValue = (hundreds* 100 + tens * 10 + ones);
+            System.out.println("TENS RETURN number = " + retValue);
+            return retValue;
+        }
+        if (supplyNumber - targetOnes > 0){
+            ones = 9;
+
+        }else{
+            ones += supplyNumber;
+            retValue = (hundreds* 100 + tens * 10 + ones);
+            System.out.println("ONES RETURN number = " + retValue);
+            return retValue;
+        }
+
+        return retValue;
     }
 }
 
