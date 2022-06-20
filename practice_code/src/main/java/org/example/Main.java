@@ -202,72 +202,64 @@ public class Main {
 
     }
 
-    public static int Solution12(){  
-        int originalNumber = 235;
+    public static int Solution12(){
+        int originalNumber = 235;  // number to add to each digit
         int number = originalNumber;
-        int supplyNumber = -9;
+        int supplyNumber = 115;  // the number used to add to the original number as necessary
         int retValue = 0;
 
-        if (supplyNumber <=0){
-            System.out.println("the number is " + number);
-        }
-
-        int ones = number % 10;
-        System.out.println("ones = " + ones + " number = " + number);
+        int ones = number % 10;  // begin the process of deconstructing the number into its individual digit numbers
+        System.out.println("ones = " + ones + " number = " + number);  // ones place number
 
         number = number / 10;
         System.out.println("number after / 10 = " + number);
         int tens = number % 10;
-        System.out.println("number tens = " + tens);
+        System.out.println("number tens = " + tens);  // tens place number
         number = number / 10;
-        int hundreds =  number % 10;
+        int hundreds =  number % 10;  // hundreds place number
         number = number / 10;
         System.out.println("ones = " + ones + " tens = " + tens + " hundreds = " + hundreds + "number = " + number);
 
-       int targetHundreds = 9 - hundreds;
+       int targetHundreds = 9 - hundreds;  // calculate the maximum number to be added to each place to reach 9
        int targetTens = 9 - tens;
        int targetOnes = 9 - ones;
 
-       if (supplyNumber <=0){
+       if (supplyNumber <=0){  //  short circuit the process if the supplied number is zero or negative
            System.out.println("QUICK HIT number: " + originalNumber);
            retValue = originalNumber;
            return  retValue;
        }
 
-       if((supplyNumber) >= (targetHundreds + targetOnes + targetTens)){
+       if((supplyNumber) >= (targetHundreds + targetOnes + targetTens)){  // If the supplied number is greater than the total numbers necessary, simply return 999
             System.out.println("IF ONE The number is : " + 999);
             return retValue;
         }
 
-       if (supplyNumber - targetHundreds > 0){
+       if (supplyNumber - targetHundreds > 0){  // if supply number is greater than needed, make hundreds place a 9 and decrement the supply number by appropriate amount
            hundreds = 9;
            supplyNumber -= targetHundreds;
        }else{
-           hundreds += supplyNumber;
+           hundreds += supplyNumber;  // all supply number has been used, so increment the hundreds number and return
            retValue = (hundreds* 100 + tens * 10 + ones);
            System.out.println("HUNDREDS RETURN number = " + retValue);
            return retValue;
        }
-        if (supplyNumber - targetTens > 0){
-            tens = 9;
+        if (supplyNumber - targetTens > 0){  // We've made it here so there is still some supply number left to distribute
+            tens = 9;  // if the supply number is more than needed for the tens place, make tens place 9 and decrement the supply number appropriately
             supplyNumber -= targetTens;
         }else{
-            tens += supplyNumber;
+            tens += supplyNumber;  // here there is some supply number to increment tens place but not ones place, so update the tens place and return
             retValue = (hundreds* 100 + tens * 10 + ones);
             System.out.println("TENS RETURN number = " + retValue);
             return retValue;
         }
-        if (supplyNumber - targetOnes > 0){
-            ones = 9;
 
-        }else{
-            ones += supplyNumber;
+            ones += supplyNumber;  // final case is to add a partial amount to the ones place and return
             retValue = (hundreds* 100 + tens * 10 + ones);
             System.out.println("ONES RETURN number = " + retValue);
             return retValue;
-        }
 
-        return retValue;
+
     }
 }
 
