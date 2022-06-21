@@ -35,7 +35,8 @@ public class Main {
         //Solution10();
         //Solution11();
         //Solution12();
-        Solution13();
+        //Solution13();
+        Solution14();
     }
 
     public static void Solution(){
@@ -274,5 +275,21 @@ public class Main {
         // simple statement ... simply Integer.bitCount(i) !!
         System.out.println("the number of 1's in the binary representation of " + number + " is " + Integer.bitCount(number));
     }
+
+    public static void Solution14(){
+        String A = "hello";
+        String B = "java";
+        String C = "";
+
+        int count = 0;
+
+        count = (A.length() + B.length());
+        System.out.println("length of hello and java is " + count);
+
+        C = A.substring(0,1).toUpperCase();
+        B.substring(0,1).toUpperCase();
+        System.out.println((C));
+    }
+
 }
 
